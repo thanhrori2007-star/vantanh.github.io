@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Báo Tin Mới - C8K51</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #fff;
+      background: linear-gradient(180deg, #1a2cff, #2d89ff);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .top-logo {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .top-logo img {
+      width: 120px;
+      height: auto;
+    }
+
+    .slogan {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .intro-text {
+      font-size: 16px;
+      color: #ffeb3b;
+      margin-top: 5px;
+    }
+
+    /* Container nội dung */
+    .container {
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .article {
+      width: 80%;
+      max-width: 1000px;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 25px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .article h2 {
+      color: #ffce00;
+      margin-bottom: 10px;
+    }
+
+    .meta {
+      font-size: 14px;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+
+    /* Slider ảnh */
+    .slider {
+      position: relative;
+      width: 100%;
+      max-width: 687px;
+      height: 340px;
+      margin: 20px auto;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .slides {
+      display: flex;
+      width: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .slides img {
+      width: 687px;
+      height: 340px;
+      object-fit: contain;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .slides img:hover {
+      transform: scale(1.03);
+    }
+
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255,255,255,0.7);
+      border: none;
+      font-size: 24px;
+      padding: 8px 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: rgba(255,255,255,0.9);
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    /* Ảnh riêng */
+    .single-image {
+      width: 100%;
+      margin: 25px 0;
+      text-align: center;
+    }
+
+    .single-image img {
+      width: 687px;
+      height: 340px;
+      object-fit: contain;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .single-image img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Video */
+    video.custom-video {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      font-size: 14px;
+      color: #ccc;
+      margin-top: 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Nền động */
+    canvas#background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Lightbox xem ảnh to */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 85%;
+      border-radius: 12px;
+      box-shadow: 0 4px 25px rgba(255,255,255,0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <div class="top-logo">
+    <a href="index.html">
+      <img src="logo.png" alt="Logo Yen Dinh II School C8K51">
+    </a>
+    <p class="slogan">Lớp C8K51 – Yên Định II School</p>
+    <p class="intro-text">✨ Chào Mừng Đến Với Kỷ Niệm Lớp ✨</p>
+  </div>  
+
+  <!-- ❌ ĐÃ GỠ phần ảnh lớp chính giữa -->
+
+  <!-- Nội dung chính -->
+  <main class="container content">
+    <article class="article">
+      <h2></h2>
+      <p class="meta"></p>
+
+      <!-- 🖼️ Slider ảnh -->
+      <div class="slider">
+        <div class="slides">
+          <img src="img/anhlop1.jpg" alt="Ảnh 1">
+          <img src="img/anhlop2.jpg" alt="Ảnh 2">
+          <img src="img/anhlop3.jpg" alt="Ảnh 3">
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+      </div>
+
+      <p></p>
+
+
+      <!-- 🖼️ Ảnh riêng -->
+      <div class="single-image">
+        <img src="img/anh" alt="Thêm Ảnh">
+      </div>
+
+      <!-- 🎥 Video -->
+      <h3>🎥 Thêm Video</h3>
+      <video class="custom-video" controls poster="https://picsum.photos/800/400">
+        <source src="video/cc" type="video/mp4">
+        Trình duyệt của bạn không hỗ trợ video.
+      </video>
+    </article>
+  </main>
+
+  <footer>
+    <p>Admin - Văn Thành</p>
+  </footer>
+
+  <!-- Nền động -->
+  <canvas id="background"></canvas>
+
+  <!-- Lightbox xem ảnh -->
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" src="" alt="Xem ảnh to">
+  </div>
+
+  <script>
+    // 🌈 Hiệu ứng hạt rơi
+    const canvas = document.getElementById("background");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const numParticles = 600;
+
+    for (let i = 0; i < numParticles; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 3 + 1,
+        dy: Math.random() * 2 + 1,
+        color: `hsl(${Math.random() * 360}, 90%, 70%)`
+      });
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+
+        p.y += p.dy;
+        if (p.y > canvas.height) {
+          p.y = 0;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+    }
+
+    function animate() {
+      drawParticles();
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // 🎞️ Slider chính xác
+    let index = 0;
+    const slides = document.querySelector('.slides');
+    const images = document.querySelectorAll('.slides img');
+    const total = images.length;
+
+    function moveSlide(step) {
+      index = (index + step + total) % total;
+      slides.style.transform = `translateX(-${index * 687}px)`;
+    }
+
+    // 🖼️ Lightbox xem ảnh to
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+
+    document.querySelectorAll(".slides img, .single-image img").forEach(img => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightbox.style.display = "flex";
+      });
+    });
+
+    lightbox.addEventListener("click", () => {
+      lightbox.style.display = "none";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+/* 🌈 Nền gradient nhiều lớp + hiệu ứng chuyển động ánh sáng */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, #3b82f6, #2563eb, #1e3a8a);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  color: white;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Sóng cong trắng ở cuối trang */
+body::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 120%;
+  height: 250px;
+  background: white;
+  border-top-left-radius: 50% 40%;
+  border-top-right-radius: 50% 40%;
+  transform: translateX(-10%);
+  z-index: 0;
+}
+
+/* Ánh sáng di chuyển nhẹ */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2), transparent 70%),
+              radial-gradient(circle at 70% 70%, rgba(255,255,255,0.15), transparent 80%);
+  animation: moveLight 30s linear infinite;
+  z-index: 0;
+}
+
+@keyframes moveLight {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-30%, -30%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* 🏫 Logo trên cùng */
+.top-logo {
+  text-align: center;
+  padding: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.top-logo img {
+  height: 90px;
+}
+
+.top-logo .slogan {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 10px;
+}
+
+/* 📰 Bố cục nội dung */
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 50px;
+  max-width: 1200px;
+  margin: auto;
+  z-index: 2;
+  position: relative;
+}
+
+.article {
+  flex: 3;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  padding: 25px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+/* 📌 Thanh bên */
+.sidebar {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(8px);
+  color: #fff;
+}
+
+.sidebar a {
+  color: #00eaff;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+/* ⚙️ Footer */
+footer {
+  text-align: center;
+  padding: 25px;
+  font-size: 14px;
+  color: #fff;
+  background: rgba(0,0,0,0.3);
+  border-top: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  z-index: 2;
+}
+
+/* 🖼️ Ảnh lớp chính giữa */
+.main-photo {
+  display: flex;
+  justify-content: center;   /* Căn giữa ngang */
+  align-items: center;       /* Căn giữa dọc */
+  margin: 40px auto;         /* Khoảng cách trên và dưới */
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* 👉 Chỉnh khung hình ở đây */
+.main-photo img {
+  width: 700px;              /* 🔧 Đổi tùy ý, ví dụ 700 */
+  height: 370px;             /* 🔧 Đổi tùy ý, ví dụ 370 */
+  object-fit: cover;         /* Giữ tỉ lệ ảnh */
+  border-radius: 15px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.main-photo img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* 📱 Tự co khi xem trên điện thoại */
+@media (max-width: 768px) {
+  .main-photo img {
+    width: 95%;
+    height: auto;
+  }
+}
